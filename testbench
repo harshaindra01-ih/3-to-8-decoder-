@@ -1,0 +1,30 @@
+module decoder_tb;
+
+reg [2:0] d;
+reg e;
+wire [7:0] y;
+
+decoder3to8 uut(d,e,y);
+
+initial begin
+     $dumpfile("decoder.vcd");
+    $dumpvars(0, decoder_tb);
+    e=1;
+    d=0; #100;
+    d=1; #100;
+    d=2; #100;
+    d=3; #100;
+    d=4; #100;
+    d=5; #100;
+    d=6; #100;
+    d=7; #100;
+
+    e=0;
+    $finish;
+end
+
+initial begin
+    $monitor("d=%b e=%b y=%b",d,e,y);
+end
+
+endmodule
